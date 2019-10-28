@@ -20,6 +20,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* MoneyTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MoneyTrackTests.m */; };
 		703AE91512D198FD114332A3 /* libPods-MoneyTrack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4B4498780474E93A5E0D22 /* libPods-MoneyTrack.a */; };
 		D7F99A5B6B8DFE24CD958E9E /* libPods-MoneyTrackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA1D4ED02736790036FF1A4 /* libPods-MoneyTrackTests.a */; };
+		F417B4742366F1050067685A /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F417B4732366F1050067685A /* Gilroy-Light.otf */; };
+		F4BFB35E2366F78C00DDDA40 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F4BFB35D2366F78C00DDDA40 /* Gilroy-ExtraBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		E4AE82F3CFE5587F9090B237 /* Pods-MoneyTrack-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyTrack-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-MoneyTrack-tvOS/Pods-MoneyTrack-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F417B4732366F1050067685A /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gilroy-Light.otf"; path = "../src/assets/fonts/Gilroy-Light.otf"; sourceTree = "<group>"; };
+		F4BFB35D2366F78C00DDDA40 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gilroy-ExtraBold.otf"; path = "../src/assets/fonts/Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +165,6 @@
 				E3B7B63E57EA71C14658A774 /* Pods-MoneyTrackTests.debug.xcconfig */,
 				400880BB92F30D4123349C4B /* Pods-MoneyTrackTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -175,6 +178,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F4BFB35D2366F78C00DDDA40 /* Gilroy-ExtraBold.otf */,
+				F417B4732366F1050067685A /* Gilroy-Light.otf */,
 				13B07FAE1A68108700A75B9A /* MoneyTrack */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* MoneyTrackTests */,
@@ -308,6 +313,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -338,6 +344,8 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				F417B4742366F1050067685A /* Gilroy-Light.otf in Resources */,
+				F4BFB35E2366F78C00DDDA40 /* Gilroy-ExtraBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
