@@ -16,6 +16,9 @@
     "@types/react-test-renderer": "^16.9.1",
     "react": "16.9.0",
     "react-native": "0.61.2",
+    "react-native-svg": "^9.13.3",
+    "react-native-svg-uri": "^1.2.3",
+    "react-native-swiper": "^1.6.0-rc.3",
     "typescript": "^3.6.4"
   },
   "devDependencies": {
