@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
-import { StatusBar, Text, View, SafeAreaView } from 'react-native'
+import { SafeAreaView, StatusBar, Text, View } from 'react-native'
 
-import Style from './src/constants/defaults'
+import Login from "./src/screens/AuthScreens/Login";
+import SignUp from "./src/screens/AuthScreens/SignUp";
 import { SplashScreen } from './src/screens'
+import { defaultStyles } from './src/constants/defaults'
 
 export default class App extends Component {
   render() {
     return (
-      <SafeAreaView style={Style.container}>
+      <SafeAreaView style={defaultStyles.container}>
         <StatusBar barStyle="light-content" />
-        <SplashScreen />
+        <SignUp />
       </SafeAreaView>
     )
   }

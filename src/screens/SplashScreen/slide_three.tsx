@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-
-import { Button } from "../../reusables";
-import Style from './style'
 import SvgUri from 'react-native-svg-uri';
-import { defaults } from '../../constants/defaults';
+
+import { defaultStyles, defaults } from '../../constants/defaults';
+import { Button } from "../../reusables";
+
+import Style from './style'
 
 export default class SlideThree extends Component {
     handleLogin = () => {
@@ -43,10 +44,10 @@ export default class SlideThree extends Component {
                 icon={icon}
                 text={text}
                 width={width}
-                style={Style.button}
+                style={defaultStyles.button}
                 textColor={defaults.BUTTON_TEXT_COLOR}
                 textSize={20}
-                textStyle={Style.buttonText}
+                textStyle={defaultStyles.buttonText}
                 onPress={handleOnPress}
             />
         )
@@ -55,15 +56,15 @@ export default class SlideThree extends Component {
     render() {
         return (
             <View style={Style.slidesContainer}>
-                <View style={Style.header}>
+                <View style={defaultStyles.header}>
                     <SvgUri
                         width={defaults.APP_ICON_WIDTH}
                         height={defaults.APP_ICON_WIDTH}
                         source={require('../../assets/images/currency.svg')}
                     />
-                    <Text style={Style.appName}>CURRENCY TRACK</Text>
+                    <Text style={defaultStyles.appName}>CURRENCY TRACK</Text>
                 </View>
-                <View style={Style.footer}>
+                <View style={defaultStyles.footer}>
                     <View style={Style.buttonWrapper}>
                         {this.renderButtons('login', defaults.SCREEN_WIDTH / 2 - 30)}
                         {this.renderButtons('sign up', defaults.SCREEN_WIDTH / 2 - 30)}
