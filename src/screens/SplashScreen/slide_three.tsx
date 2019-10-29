@@ -1,19 +1,25 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import SvgUri from 'react-native-svg-uri';
+import { NavigationStackProp } from 'react-navigation-stack';
 
 import { defaultStyles, defaults } from '../../constants/defaults';
 import { Button } from "../../reusables";
 
 import Style from './style'
 
-export default class SlideThree extends Component {
+interface Props {
+    navigation: NavigationStackProp<{}>
+}
+
+
+export default class SlideThree extends Component<Props, {}> {
     handleLogin = () => {
-        console.log("Login")
+        this.props.navigation.navigate('Login')
     }
 
     handleSignUp = () => {
-        console.log("SignUp")
+        this.props.navigation.navigate('SignUp')
     }
 
     handleFacebookLogin = () => {
