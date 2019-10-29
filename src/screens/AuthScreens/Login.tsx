@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
+import { NavigationStackProp } from 'react-navigation-stack';
 
 import { defaultStyles, defaults } from '../../constants/defaults'
 import { Button, Input } from '../../reusables';
@@ -7,7 +8,11 @@ import { Button, Input } from '../../reusables';
 import HeaderSection from './HeaderSection'
 import Style from './style'
 
-export default class Login extends Component {
+interface Props {
+    navigation: NavigationStackProp<{}>
+}
+
+export default class Login extends Component<Props, {}> {
     render() {
         const footerStyle = StyleSheet.flatten([defaultStyles.footer, { flex: 1.5 }])
 
@@ -35,7 +40,7 @@ export default class Login extends Component {
                         textColor={defaults.BUTTON_TEXT_COLOR}
                         textSize={20}
                         textStyle={defaultStyles.buttonText}
-                    //onPress={handleOnPress}
+                    // onPress={this.handleLogin}
                     />
                 </View>
             </View>

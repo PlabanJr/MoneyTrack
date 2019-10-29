@@ -1,6 +1,5 @@
-import { ImageURISource, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { Component } from 'react'
-
+import { ImageURISource, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import SvgUri from 'react-native-svg-uri';
 
 interface Props {

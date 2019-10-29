@@ -36,7 +36,7 @@ export default class Login extends Component {
                     />
                     <Button
                         color={defaults.BUTTON_COLOR_ONE}
-                        text='login'
+                        text='sign up'
                         width={defaults.SCREEN_WIDTH - 50}
                         style={defaultStyles.button}
                         textColor={defaults.BUTTON_TEXT_COLOR}
