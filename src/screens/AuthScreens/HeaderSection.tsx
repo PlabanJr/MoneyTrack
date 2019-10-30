@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
+import SvgUri from 'react-native-svg-uri';
 
 import { defaultStyles, defaults } from '../../constants/defaults'
-
-import SvgUri from 'react-native-svg-uri';
 
 interface Props {
     route: string
