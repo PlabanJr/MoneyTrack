@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ImageURISource, StyleSheet, TextInput, View } from 'react-native'
 import SvgUri from 'react-native-svg-uri';
 
-import { defaults } from '../../constants/defaults';
+import { defaults } from '../constants/defaults';
 
 interface Props {
     autoCapitalize?: any
@@ -11,12 +11,12 @@ interface Props {
     placeholderTextColor?: string
     secureTextEntry?: boolean
     style?: Object
-    onChangeText?: () => void
+    onChangeText?: (text: string) => void
 }
 
 export default class index extends Component<Props, {}> {
     render() {
-        const { autoCapitalize, icon, placeholder, placeholderTextColor, secureTextEntry, style } = this.props
+        const { autoCapitalize, icon, placeholder, placeholderTextColor, secureTextEntry, style, onChangeText } = this.props
 
         return (
             <View style={Style.input}>
@@ -33,6 +33,7 @@ export default class index extends Component<Props, {}> {
                     placeholder={placeholder}
                     style={style}
                     secureTextEntry={secureTextEntry}
+                    onChangeText={onChangeText}
                 />
             </View>
 
