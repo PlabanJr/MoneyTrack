@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
+import { Animated, KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { NavigationStackProp } from 'react-navigation-stack';
 
 import { defaultStyles, defaults, invalidMsgs } from '../../constants/defaults'
@@ -15,10 +15,14 @@ interface Props {
 
 export default class Login extends Component<Props, {}> {
     state = {
+        animatedWidth: new Animated.Value(defaults.SCREEN_WIDTH - 50),
+        animatedValue: new Animated.Value(1),
         email: '',
+        hideText: false,
         incorrectEmailFormat: false,
+        loading: false,
         modalVisible: false,
-        password: ''
+        password: '',
     }
 
     getModalMsg = () => {
@@ -43,15 +47,42 @@ export default class Login extends Component<Props, {}> {
     }
 
     handleLogin = () => {
-        const { email, incorrectEmailFormat, password } = this.state;
+        const { animatedWidth, email, incorrectEmailFormat, password } = this.state;
 
-        if (incorrectEmailFormat || !password || !email) {
-            this.setState({ modalVisible: true })
-        }
+        // if (incorrectEmailFormat || !password || !email) {
+        //     this.setState({ modalVisible: true })
+        // }
+
+        this.setState({ loading: true })
+
+        Animated.spring(
+            animatedWidth,
+            {
+                toValue: 40,
+                bounciness: 4
+            }
+        ).start()
+
+        setTimeout(() => this.scaleButton(), 3000)
+    }
+
+    scaleButton = () => {
+        const { animatedValue, email, incorrectEmailFormat, password } = this.state;
+        this.setState({ loading: false, hideText: true })
+
+        Animated.timing(
+            animatedValue,
+            {
+                toValue: 55,
+                duration: 200
+            }
+        ).start(
+            () => this.props.navigation.navigate('feed')
+        )
     }
 
     render() {
-        const { incorrectEmailFormat, modalVisible } = this.state
+        const { hideText, animatedValue, animatedWidth, incorrectEmailFormat, loading, modalVisible } = this.state
         const footerStyle = StyleSheet.flatten([defaultStyles.footer, { flex: 1.5 }])
         const invalidStyle = incorrectEmailFormat ? { color: defaults.DANGER } : null
         const inputFieldStyle = StyleSheet.flatten([Style.inputFields, invalidStyle])
@@ -81,9 +112,12 @@ export default class Login extends Component<Props, {}> {
                         onChangeText={(password) => this.setState({ password })}
                     />
                     <Button
+                        hideText={false}
+                        animatedValue={animatedValue}
                         color={defaults.BUTTON_COLOR_ONE}
-                        text='login'
-                        width={defaults.SCREEN_WIDTH - 50}
+                        loading={loading}
+                        text={hideText ? '' : 'login'}
+                        width={animatedWidth}
                         style={defaultStyles.button}
                         textColor={defaults.BUTTON_TEXT_COLOR}
                         textSize={20}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { KeyboardAvoidingView, View, StyleSheet } from 'react-native'
+import { Animated, KeyboardAvoidingView, View, StyleSheet } from 'react-native'
+import { NavigationStackProp } from 'react-navigation-stack';
 
 import { defaults, defaultStyles, invalidMsgs } from '../../constants/defaults'
 import { Button, Input, Modal } from '../../reusables';
@@ -8,12 +9,20 @@ import { validateEmail, validatePassword, validateUsername } from '../../utils'
 import HeaderSection from './HeaderSection'
 import Style from './style'
 
-export default class Login extends Component {
+interface Props {
+    navigation: NavigationStackProp<{}>
+}
+
+export default class Login extends Component<Props, {}>  {
     state = {
+        animatedValue: new Animated.Value(1),
+        animatedWidth: new Animated.Value(defaults.SCREEN_WIDTH - 50),
         email: '',
+        hideText: false,
         incorrectEmailFormat: false,
         incorrectPasswordFormat: false,
         incorrectUsernameFormat: false,
+        loading: false,
         modalVisible: false,
         password: '',
         username: '',
@@ -46,6 +55,7 @@ export default class Login extends Component {
 
     handleSignUp = () => {
         const {
+            animatedWidth,
             email,
             incorrectEmailFormat,
             incorrectPasswordFormat,
@@ -54,16 +64,44 @@ export default class Login extends Component {
             username
         } = this.state;
 
-        if (
-            incorrectUsernameFormat ||
-            incorrectEmailFormat ||
-            incorrectPasswordFormat ||
-            !username ||
-            !password ||
-            !email
-        ) {
-            this.setState({ modalVisible: true })
-        }
+        // if (
+        //     incorrectUsernameFormat ||
+        //     incorrectEmailFormat ||
+        //     incorrectPasswordFormat ||
+        //     !username ||
+        //     !password ||
+        //     !email
+        // ) {
+        //     this.setState({ modalVisible: true })
+        // }
+
+        this.setState({ loading: true })
+
+        Animated.spring(
+            animatedWidth,
+            {
+                toValue: 40,
+                bounciness: 4
+            }
+        ).start()
+
+
+        setTimeout(() => this.scaleButton(), 3000)
+    }
+
+    scaleButton = () => {
+        const { animatedValue, email, incorrectEmailFormat, password } = this.state;
+        this.setState({ loading: false, hideText: true })
+
+        Animated.timing(
+            animatedValue,
+            {
+                toValue: 55,
+                duration: 200
+            }
+        ).start(
+            () => this.props.navigation.navigate('feed')
+        )
     }
 
     validateEmailText = (email: string) => {
@@ -83,7 +121,15 @@ export default class Login extends Component {
 
 
     render() {
-        const { modalVisible, incorrectEmailFormat, incorrectPasswordFormat, incorrectUsernameFormat } = this.state
+        const { animatedValue,
+            loading,
+            hideText,
+            animatedWidth,
+            modalVisible,
+            incorrectEmailFormat,
+            incorrectPasswordFormat,
+            incorrectUsernameFormat
+        } = this.state
         const footerStyle = StyleSheet.flatten([defaultStyles.footer, { flex: 1.5 }])
         const invalidStyle = { color: defaults.DANGER }
         const inputFieldStyle = StyleSheet.flatten([Style.inputFields, invalidStyle])
@@ -120,9 +166,12 @@ export default class Login extends Component {
                         onChangeText={(password) => this.validatePasswordText(password)}
                     />
                     <Button
+                        hideText={false}
+                        animatedValue={animatedValue}
                         color={defaults.BUTTON_COLOR_ONE}
-                        text='sign up'
-                        width={defaults.SCREEN_WIDTH - 50}
+                        loading={loading}
+                        text={hideText ? '' : 'sign up'}
+                        width={animatedWidth}
                         style={defaultStyles.button}
                         textColor={defaults.BUTTON_TEXT_COLOR}
                         textSize={20}
