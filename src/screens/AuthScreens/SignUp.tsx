@@ -90,7 +90,7 @@ export default class Login extends Component<Props, {}>  {
     }
 
     scaleButton = () => {
-        const { animatedValue, email, incorrectEmailFormat, password } = this.state;
+        const { animatedValue } = this.state;
         this.setState({ loading: false, hideText: true })
 
         Animated.timing(

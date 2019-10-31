@@ -63,11 +63,11 @@ export default class Login extends Component<Props, {}> {
             }
         ).start()
 
-        setTimeout(() => this.scaleButton(), 3000)
+        setTimeout(() => this.scaleButton(), 1000)
     }
 
     scaleButton = () => {
-        const { animatedValue, email, incorrectEmailFormat, password } = this.state;
+        const { animatedValue } = this.state;
         this.setState({ loading: false, hideText: true })
 
         Animated.timing(
