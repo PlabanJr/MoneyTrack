@@ -3,8 +3,8 @@ import { Animated, KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { NavigationStackProp } from 'react-navigation-stack';
 
 import { defaultStyles, defaults, invalidMsgs } from '../../constants/defaults'
-import { Button, Input, Modal } from '../../reusables';
-import { validateEmail } from '../../utils'
+import { Button, Header, Input, Modal } from '../../reusables';
+import { validateEmail, scaleButtonHelper, animateButtonWidth, goBack } from '../../utils'
 
 import HeaderSection from './HeaderSection'
 import Style from './style'
@@ -54,34 +54,21 @@ export default class Login extends Component<Props, {}> {
         // }
 
         this.setState({ loading: true })
-
-        Animated.spring(
-            animatedWidth,
-            {
-                toValue: 40,
-                bounciness: 4
-            }
-        ).start()
+        animateButtonWidth(animatedWidth)
 
         setTimeout(() => this.scaleButton(), 1000)
     }
 
     scaleButton = () => {
         const { animatedValue } = this.state;
+        const { navigation } = this.props;
         this.setState({ loading: false, hideText: true })
 
-        Animated.timing(
-            animatedValue,
-            {
-                toValue: 55,
-                duration: 200
-            }
-        ).start(
-            () => this.props.navigation.navigate('feed')
-        )
+        scaleButtonHelper(animatedValue, navigation)
     }
 
     render() {
+        const { navigation } = this.props
         const { hideText, animatedValue, animatedWidth, incorrectEmailFormat, loading, modalVisible } = this.state
         const footerStyle = StyleSheet.flatten([defaultStyles.footer, { flex: 1.5 }])
         const invalidStyle = incorrectEmailFormat ? { color: defaults.DANGER } : null
@@ -89,6 +76,7 @@ export default class Login extends Component<Props, {}> {
 
         return (
             <KeyboardAvoidingView style={defaultStyles.container} behavior="padding" >
+                <Header leftIcon={defaults.BACK_ICON} leftOnPress={() => goBack(navigation)} />
                 <HeaderSection route='login' />
                 <Modal
                     closeModal={() => this.setState({ modalVisible: false })}

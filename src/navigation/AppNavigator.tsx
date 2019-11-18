@@ -37,14 +37,9 @@ const AppSwitch = createAnimatedSwitchNavigator(
 
         transition: (
             <Transition.Sequence>
-                <Transition.Out
+                <Transition.In
                     type="fade"
                     durationMs={300}
-                    interpolation="easeIn"
-                />
-                <Transition.In
-                    type="scale"
-                    durationMs={100}
                     interpolation="easeIn"
                 />
             </Transition.Sequence>
