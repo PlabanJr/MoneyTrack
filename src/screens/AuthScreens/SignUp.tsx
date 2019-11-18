@@ -3,8 +3,15 @@ import { Animated, KeyboardAvoidingView, View, StyleSheet } from 'react-native'
 import { NavigationStackProp } from 'react-navigation-stack';
 
 import { defaults, defaultStyles, invalidMsgs } from '../../constants/defaults'
-import { Button, Input, Modal } from '../../reusables';
-import { validateEmail, validatePassword, validateUsername } from '../../utils'
+import { Button, Header, Input, Modal } from '../../reusables';
+import {
+    animateButtonWidth,
+    scaleButtonHelper,
+    validateEmail,
+    validatePassword,
+    validateUsername,
+    goBack
+} from '../../utils'
 
 import HeaderSection from './HeaderSection'
 import Style from './style'
@@ -29,7 +36,14 @@ export default class Login extends Component<Props, {}>  {
     }
 
     getModalMsg = () => {
-        const { email, incorrectEmailFormat, incorrectPasswordFormat, incorrectUsernameFormat, password, username } = this.state;
+        const {
+            email,
+            incorrectEmailFormat,
+            incorrectPasswordFormat,
+            incorrectUsernameFormat,
+            password,
+            username
+        } = this.state;
 
         if (incorrectUsernameFormat) {
             return invalidMsgs.USERNAME_INVALID;
@@ -76,32 +90,17 @@ export default class Login extends Component<Props, {}>  {
         // }
 
         this.setState({ loading: true })
-
-        Animated.spring(
-            animatedWidth,
-            {
-                toValue: 40,
-                bounciness: 4
-            }
-        ).start()
-
+        animateButtonWidth(animatedWidth)
 
         setTimeout(() => this.scaleButton(), 3000)
     }
 
     scaleButton = () => {
         const { animatedValue } = this.state;
+        const { navigation } = this.props;
         this.setState({ loading: false, hideText: true })
 
-        Animated.timing(
-            animatedValue,
-            {
-                toValue: 55,
-                duration: 200
-            }
-        ).start(
-            () => this.props.navigation.navigate('feed')
-        )
+        scaleButtonHelper(animatedValue, navigation)
     }
 
     validateEmailText = (email: string) => {
@@ -121,6 +120,7 @@ export default class Login extends Component<Props, {}>  {
 
 
     render() {
+        const { navigation } = this.props
         const { animatedValue,
             loading,
             hideText,
@@ -136,6 +136,7 @@ export default class Login extends Component<Props, {}>  {
 
         return (
             <KeyboardAvoidingView style={defaultStyles.container} behavior="padding" >
+                <Header leftIcon={defaults.BACK_ICON} leftOnPress={() => goBack(navigation)} />
                 <HeaderSection route='signUp' />
                 <Modal
                     closeModal={() => this.setState({ modalVisible: false })}

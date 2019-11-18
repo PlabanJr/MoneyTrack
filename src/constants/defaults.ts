@@ -3,6 +3,7 @@ import { Dimensions, StyleSheet } from 'react-native';
 export const defaults = {
     APP_ICON_WIDTH: 120,
     APP_TEXT_SIZE: 28,
+    BACK_ICON: require('../assets/images/back.svg'),
     BG_COLOR: '#191c27',
     BUTTON_COLOR: '#dbd8e3',
     BUTTON_COLOR_ONE: '#dd6892',
@@ -10,6 +11,7 @@ export const defaults = {
     BUTTON_TEXT_COLOR: '#000',
     DANGER: '#ff0000',
     DOT_COLOR: '#3d2e4f',
+    HEADER_ICON_SIZE: 30,
     SCREEN_WIDTH: Dimensions.get('screen').width,
     TEXT_BOLD: 'Gilroy-ExtraBold',
     TEXT_COLOR: '#fff',
