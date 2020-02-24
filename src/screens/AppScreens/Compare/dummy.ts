@@ -1,0 +1,17 @@
+export const rates = [
+  { currency: "INR", rate: 1.624 },
+  { currency: "USD", rate: 1.9558 },
+  { currency: "BRL", rate: 4.6654 },
+  { currency: "CAD", rate: 1.4656 },
+  { currency: "CHF", rate: 1.0995 },
+  { currency: "CNY", rate: 7.7625 },
+  { currency: "CZK", rate: 25.534 },
+  { currency: "DKK", rate: 7.4712 },
+  { currency: "GBP", rate: 0.85218 },
+  { currency: "HKD", rate: 8.6297 },
+  { currency: "HRK", rate: 7.438 },
+  { currency: "HUF", rate: 332.98 },
+  { currency: "IDR", rate: 15569.99 },
+  { currency: "IDR", rate: 15569.99 },
+  { currency: "IDR", rate: 15569.99 },
+]

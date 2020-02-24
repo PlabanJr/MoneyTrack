@@ -1,6 +1,7 @@
 import SplashScreen from './SplashScreen'
 import Login from './AuthScreens/Login'
 import SignUp from './AuthScreens/SignUp'
-import feed from '../screens/AppScreens/feed'
+import Compare from './AppScreens/Compare'
+import Account from './AppScreens/Account'
 
-export { feed, Login, SignUp, SplashScreen }
+export { Compare, Login, SignUp, SplashScreen, Account }

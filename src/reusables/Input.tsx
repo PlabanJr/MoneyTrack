@@ -11,15 +11,19 @@ interface Props {
     placeholderTextColor?: string
     secureTextEntry?: boolean
     style?: Object
+    wrapperStyle?: Object
     onChangeText?: (text: string) => void
 }
 
-export default class index extends Component<Props, {}> {
+export default class InputFields extends Component<Props, {}> {
     render() {
-        const { autoCapitalize, icon, placeholder, placeholderTextColor, secureTextEntry, style, onChangeText } = this.props
+        const {
+            autoCapitalize, icon, placeholder, placeholderTextColor, secureTextEntry, style, onChangeText, wrapperStyle } = this.props
+
+        const wrapper = StyleSheet.flatten([Style.input, wrapperStyle])
 
         return (
-            <View style={Style.input}>
+            <View style={wrapper}>
                 {icon ? <SvgUri
                     width='20'
                     height='20'
@@ -36,7 +40,6 @@ export default class index extends Component<Props, {}> {
                     onChangeText={onChangeText}
                 />
             </View>
-
         )
     }
 }
