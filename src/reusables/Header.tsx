@@ -15,6 +15,7 @@ interface Props {
   rightIcon?: ImageURISource
   rightOnPress?: () => void
   title?: string
+  titleStyle?: Object
 }
 
 export default class Header extends Component<Props, {}> {
@@ -55,18 +56,19 @@ export default class Header extends Component<Props, {}> {
   }
 
   render() {
-    const { headerColor, leftOnPress, rightOnPress, title } = this.props
+    const { headerColor, leftOnPress, rightOnPress, title, titleStyle } = this.props
     const headerStyle = StyleSheet.flatten([
       Style.container,
-      { backgroundColor: headerColor && defaults.BG_COLOR }
+      { backgroundColor: headerColor || defaults.BG_COLOR }
     ])
+    const headerTextStyle = StyleSheet.flatten([Style.title, titleStyle])
 
     return (
       <View style={headerStyle}>
         <TouchableOpacity onPress={leftOnPress}>
           {this.renderLeftContent()}
         </TouchableOpacity>
-        <Text style={Style.title}>{title}</Text>
+        <Text style={headerTextStyle}>{title}</Text>
         <TouchableOpacity onPress={rightOnPress}>
           {this.renderRightContent()}
         </TouchableOpacity>
@@ -84,12 +86,17 @@ const Style = StyleSheet.create({
     paddingVertical: 10,
   },
   leftContent: {
-    color: defaults.TEXT_COLOR
+    color: defaults.TEXT_COLOR,
+    width: 60,
+    fontSize: 20,
   },
   rightContent: {
-    color: defaults.TEXT_COLOR
+    color: defaults.TEXT_COLOR,
+    width: 60
   },
   title: {
-    color: defaults.TEXT_COLOR
+    color: defaults.TEXT_COLOR,
+    fontSize: 25,
+    fontFamily: defaults.TEXT_BOLD
   },
 });

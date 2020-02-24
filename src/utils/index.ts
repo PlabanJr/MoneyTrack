@@ -45,6 +45,6 @@ export const scaleButtonHelper = (animatedValue: Animated.Value, navigation: Nav
             duration: 280
         }
     ).start(
-        () => navigation.navigate('feed')
+        () => navigation.navigate('Compare')
     )
 }

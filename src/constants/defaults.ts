@@ -14,6 +14,8 @@ export const defaults = {
     DANGER: '#ff0000',
     DOT_COLOR: '#3d2e4f',
     HEADER_ICON_SIZE: 30,
+    HALF_BAKED: "#91BED4",
+    MULLED_WINE: "#463B4F",
     SCREEN_WIDTH: Dimensions.get('screen').width,
     SCREEN_HEIGHT: Dimensions.get('screen').height,
     TEXT_BOLD: 'Gilroy-ExtraBold',

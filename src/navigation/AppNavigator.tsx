@@ -5,7 +5,7 @@ import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
 import { Transition } from 'react-native-reanimated';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-import { Home, SplashScreen, Login, SignUp } from '../screens'
+import { Compare, SplashScreen, Login, SignUp, Account } from '../screens'
 
 import { BottomTabBar } from './BottomTabBar';
 import SvgUri from 'react-native-svg-uri';
@@ -24,8 +24,8 @@ const AuthStack = createStackNavigator(
 
 const BottomTabNavigator = createBottomTabNavigator(
     {
-        Home: {
-            screen: Home,
+        Compare: {
+            screen: Compare,
             navigationOptions: {
                 tabBarIcon: <SvgUri
                     width='20'
@@ -34,26 +34,16 @@ const BottomTabNavigator = createBottomTabNavigator(
                 />
             }
         },
-        Login: {
-            screen: Login,
+        Account: {
+            screen: Account,
             navigationOptions: {
                 tabBarIcon: <SvgUri
                     width='20'
                     height='25'
-                    source={require('../assets/images/coins.svg')}
+                    source={require('../assets/images/earnings.svg')}
                 />
             }
         },
-        SignUp: {
-            screen: SignUp,
-            navigationOptions: {
-                tabBarIcon: <SvgUri
-                    width='20'
-                    height='25'
-                    source={require('../assets/images/coins.svg')}
-                />
-            }
-        }
     },
     {
         tabBarComponent: BottomTabBar,
